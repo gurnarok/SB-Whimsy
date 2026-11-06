@@ -13,6 +13,12 @@ public class CPHInline
         CPH.TryGetArg("userId", out string userId);
         CPH.TryGetArg("userName", out string username);
 
+        if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(username))
+        {
+            CPH.LogError("Da fuq? No userId or username");
+            return false;
+        }
+
         // Initialize highest whimsy, make it persistant
         int? highest = CPH.GetGlobalVar<int?>("whimsy_high", true);
 
@@ -21,10 +27,8 @@ public class CPHInline
 
         string outputMsg = "";
 
-        if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(username))
-        {
-            CPH.LogError("Da fuq? No userId or username");
-        }
+        // Get users value if they have already used it
+        int? savedScore = CPH.GetTwitchUserVarById<int?>(userId,"whimsy_user", true);
 
         //CPH.SendMessage("Hello @{username}!");
         CPH.SendMessage(outputMsg);
