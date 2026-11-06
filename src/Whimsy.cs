@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Windows.Automation;
 
 #if EXTERNAL_EDITOR
 public class Whimsy : CPHInlineBase
