@@ -87,7 +87,7 @@ public class CPHInline
         CPH.SetGlobalVar("whimsy_leaders", whimsy_leaders, true);
 
         //CPH.SendMessage($"Hello @{username}!");
-        CPH.SendMessage(outputMsg);
+        CPH.SendMessage(outputMsg, false);
         return true;
     }
 }
