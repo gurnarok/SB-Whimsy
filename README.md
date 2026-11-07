@@ -8,3 +8,9 @@ Streamer.bot code, to have a whimsy as a command.
 
 # Configure
 You can change what the message contains, by adjusting the `outputMsg` variable in the `Whimsy.cs`
+
+---
+
+# WIP
+
+Need to make some screenshots.
