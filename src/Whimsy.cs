@@ -33,7 +33,8 @@ public class CPHInline
         // Check if the user has a score already
         if (users_score.HasValue)
         {
-            outputMsg = $"@{username}, your are still {users_score.Value}% whimsical gurnaroKLove";
+            // THE USER HAS A SCORE ALREADY
+            outputMsg = $"@{username}, your are still {users_score.Value}% whimsical bleedPurple";
         }
         else
         {
@@ -46,7 +47,8 @@ public class CPHInline
                 whimsy_high = whimsy_score;
                 whimsy_leaders[userId] = username;
 
-                outputMsg = $"Yo @{username}, you are the most whimsiest with {whimsy_score}%! gurnaroKSpin";
+                // THE FIRST TO WHIMSY MSG
+                outputMsg = $"Yo @{username}, you are the most whimsiest with {whimsy_score}%! B)";
             }
             else if( whimsy_score > whimsy_high.Value)
             {
@@ -54,8 +56,8 @@ public class CPHInline
                 whimsy_high = whimsy_score;
                 whimsy_leaders.Clear();
                 whimsy_leaders[userId] = username;
-
-                outputMsg = $"What! @{username} just beat everybody else with {whimsy_score}% and is the most whimsiest now! gurnaroKSpin";
+                // NEW HIGH SCORE MSG
+                outputMsg = $"What! @{username} just beat everybody else with {whimsy_score}% and is the most whimsiest now! DinoDance";
             }
             else if(whimsy_score == whimsy_high.Value)
             {
@@ -63,8 +65,8 @@ public class CPHInline
                 string highest_names = "@" + string.Join(", @", whimsy_leaders.Values);
                 // Add user to the leaderboard after getting names, so they don't get double mention
                 whimsy_leaders[userId] = username;
-
-                outputMsg = $"Nice! @{username} just tied with {highest_names}";
+                // TIE MSG
+                outputMsg = $"Nice! @{username} just tied with {highest_names} WhoaFace";
             }
             else
             {
@@ -72,11 +74,15 @@ public class CPHInline
                 string highest_names = "@" + string.Join(", @", whimsy_leaders.Values);
                 if (whimsy_leaders.Count < 2)
                 {
-                    outputMsg = $"It's not your day today @{username}, your whimsy is {whimsy_score}%, but {highest_names} has a {whimsy_high.Value}% whimsy rating.";
+                    // Only one leader
+                    // OPT1 MSG
+                    outputMsg = $"It's not your day today @{username} BigSad Your whimsy is {whimsy_score}%, but {highest_names} has a {whimsy_high.Value}% whimsy rating.";
                 }
                 else
                 {
-                    outputMsg = $"It's not your day today @{username}, your whimsy is {whimsy_score}%, but {highest_names} all have a {whimsy_high.Value}% whimsy rating.";
+                    // Multiple people with high score
+                    // OPT2 MSG
+                    outputMsg = $"It's not your day today @{username} BigSad Your whimsy is {whimsy_score}%, but {highest_names} all have a {whimsy_high.Value}% whimsy rating.";
                 }
             }
         }
@@ -85,7 +91,6 @@ public class CPHInline
         CPH.SetGlobalVar("whimsy_high", whimsy_high.Value, true);
         CPH.SetGlobalVar("whimsy_leaders", whimsy_leaders, true);
 
-        //CPH.SendMessage($"Hello @{username}!");
         CPH.SendMessage(outputMsg, false);
         return true;
     }
